@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forest Fire Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #4CAF50;
+            background-color: #f9f9f9;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Forest Fire Prediction</h1>
+        <form action="{{url_for('predict_datapoint')}}" method="POST" >
+            
+            <div class="form-group">
+                <label for="temperature">Temperature:</label>
+                <input type="number" id="temperature" name="temperature" step="0.1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="rh">RH (Relative Humidity):</label>
+                <input type="number" id="rh" name="rh" step="0.1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="ws">Ws (Wind Speed):</label>
+                <input type="number" id="ws" name="ws" step="0.1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="rain">Rain:</label>
+                <input type="number" id="rain" name="rain" step="0.1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="ffmc">FFMC:</label>
+                <input type="number" id="ffmc" name="ffmc" step="0.1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="dmc">DMC:</label>
+                <input type="number" id="dmc" name="dmc" step="0.1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="isi">ISI:</label>
+                <input type="number" id="isi" name="isi" step="0.1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="classes">Classes:</label>
+                <input type="number" id="classes" name="classes" step="0.1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="region">Region:</label>
+                <input type="number" id="region" name="region" step="0.1" required>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <h2>
+            The FWI predicted is {{results}}
+        </h2>
+    </div>
+</body>
+</html>
